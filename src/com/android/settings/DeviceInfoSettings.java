@@ -89,6 +89,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_MOD_BUILD_DATE = "build_date";
     private static final String KEY_MOD_API_LEVEL = "mod_api_level";
     private static final String KEY_CM_UPDATES = "cm_updates";
+    private static final String KEY_KEK_VERSION = "kek_version";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -141,6 +142,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setExplicitValueSummary(KEY_MOD_API_LEVEL, constructApiLevelString());
         findPreference(KEY_MOD_API_LEVEL).setEnabled(true);
         findPreference(KEY_MOD_BUILD_DATE).setEnabled(true);
+        setValueSummary(KEY_KEK_VERSION, "ro.kek.version");
+        findPreference(KEY_KEK_VERSION).setEnabled(true);
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);

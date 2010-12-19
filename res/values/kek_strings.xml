@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- About phone screen, Kek version -->
+    <string name="kek_version">Kek version</string>
+    <string name="kek_version_default">TopKek</string>
+
+</resources>
