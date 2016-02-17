@@ -95,8 +95,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
-    String FULL_BUILD_TYPE;
-
     long[] mHits = new long[3];
     int mDevHitCountdown;
     Toast mDevHitToast;
@@ -148,9 +146,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         findPreference(KEY_MOD_BUILD_DATE).setEnabled(true);
         setValueSummary(KEY_KEK_VERSION, PROPERTY_KEK_VERSION);
         findPreference(KEY_KEK_VERSION).setEnabled(true);
-        FULL_BUILD_TYPE = SystemProperties.get(PROPERTY_BUILD_TYPE, getResources().getString(R.string.device_info_default));
-        FULL_BUILD_TYPE = FULL_BUILD_TYPE.substring(0, 1).toUpperCase() + FULL_BUILD_TYPE.substring(1);
-        findPreference(KEY_BUILD_TYPE).setSummary(FULL_BUILD_TYPE);
+        setValueSummary(KEY_BUILD_TYPE, PROPERTY_BUILD_TYPE,);
         findPreference(KEY_BUILD_TYPE).setEnabled(true);
 
         if (!SELinux.isSELinuxEnabled()) {
