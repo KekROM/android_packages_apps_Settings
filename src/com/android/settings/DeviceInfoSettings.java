@@ -89,8 +89,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_MOD_BUILD_DATE = "build_date";
     private static final String KEY_MOD_API_LEVEL = "mod_api_level";
     private static final String KEY_KEK_VERSION = "kek_version";
+    private static final String PROPERTY_KEK_VERSION = "ro.kek.version";
+    private static final String KEY_BUILD_TYPE = "build_type";
+    private static final String PROPERTY_BUILD_TYPE = "ro.build.type";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
+
+    String FULL_BUILD_TYPE;
 
     long[] mHits = new long[3];
     int mDevHitCountdown;
@@ -141,8 +146,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setExplicitValueSummary(KEY_MOD_API_LEVEL, constructApiLevelString());
         findPreference(KEY_MOD_API_LEVEL).setEnabled(true);
         findPreference(KEY_MOD_BUILD_DATE).setEnabled(true);
-        setValueSummary(KEY_KEK_VERSION, "ro.kek.version");
+        setValueSummary(KEY_KEK_VERSION, PROPERTY_KEK_VERSION);
         findPreference(KEY_KEK_VERSION).setEnabled(true);
+        FULL_BUILD_TYPE = SystemProperties.get(PROPERTY_BUILD_TYPE, getResources().getString(R.string.device_info_default));
+        FULL_BUILD_TYPE = FULL_BUILD_TYPE.substring(0, 1).toUpperCase() + FULL_BUILD_TYPE.substring(1);
+        findPreference(KEY_BUILD_TYPE).setSummary(FULL_BUILD_TYPE);
+        findPreference(KEY_BUILD_TYPE).setEnabled(true);
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);

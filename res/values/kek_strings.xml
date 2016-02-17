@@ -2,6 +2,10 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- About phone screen, Build type -->
+    <string name="build_type">Build Type</string>
+    <string name="build_type_default">Unknown</string>
+
     <!-- About phone screen, Kek version -->
     <string name="kek_version">Kek version</string>
     <string name="kek_version_default">TopKek</string>
